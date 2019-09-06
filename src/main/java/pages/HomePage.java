@@ -24,11 +24,8 @@ public class HomePage extends BasePage {
         return new LoginPage(getDriver());
     }
 
-    public HomePage validateHomePage() throws InterruptedException {
-        Thread.sleep(1000);
-        boolean isSignUpButtonDisplayed = getDriver().findElement(this.signUpButton).isDisplayed();
-        boolean isLoginButton = getDriver().findElement(this.loginButton).isDisplayed();
-        Assert.assertTrue(isSignUpButtonDisplayed && isLoginButton);
+    public HomePage validateHomePage() {
+        Assert.assertTrue(isElementDisplayed(this.signUpButton) && isElementDisplayed(this.loginButton));
         return this;
     }
 

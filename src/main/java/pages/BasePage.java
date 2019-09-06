@@ -31,15 +31,34 @@ public abstract class BasePage {
         this.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
     }
 
-    //click
-    public void click(By elementBy) throws InterruptedException {
-//        WebElement element = this.driver.findElement(elementBy);
-//        Actions actions = new Actions(this.driver);
-//        actions.moveToElement(element).click().build().perform();
-        Thread.sleep(1000);
+    public boolean isElementDisplayed(By elementBy) {
+        waitUntilElementDisplay(elementBy);
+        return this.driver.findElement(elementBy).isDisplayed();
+    }
+
+    private void waitUntilElementDisplay(By elementBy) {
+        int counter = 0;
+        System.out.println(counter);
+        while (true) {
+            try {
+                counter++;
+                System.out.println(counter);
+                this.driver.findElement(elementBy); //NoSuchElementException
+                break;
+            } catch (NoSuchElementException e) {
+                System.out.println(counter + "-> Element" + elementBy.toString() + " not found!");
+                if (counter > 1000) {
+                    break;
+                }
+            }
+        }
         waitVisibility(elementBy);
+    }
+
+    //click
+    public void click(By elementBy) {
+        waitUntilElementDisplay(elementBy);
         this.driver.findElement(elementBy).click();
-        Thread.sleep(3000);
     }
 
     //write text
