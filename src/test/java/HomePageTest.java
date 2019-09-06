@@ -13,7 +13,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void validateHomePageTest() {
+    public void validateHomePageTest() throws InterruptedException {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToHomePage_method()

@@ -20,6 +20,4 @@ public class LoginPageTest extends BaseTest {
                 .checkForElementsDisplayed_LoginPage();
     }
 
-
-
 }
