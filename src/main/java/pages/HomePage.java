@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public LoginPage goToLoginPage() throws InterruptedException {
+    public LoginPage goToLoginPage() {
         getDriver().get(propertiesReader.getUrl());
         click(this.loginButton);
         return new LoginPage(getDriver());

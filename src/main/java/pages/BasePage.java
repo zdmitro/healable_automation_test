@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -111,6 +110,7 @@ public abstract class BasePage {
         waitVisibility(elementBy);
         Assert.assertEquals(readText(elementBy), expectedText);
     }
+
     public void waitForElementToAppear(By elementBy) {
         this.wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
     }
@@ -140,15 +140,6 @@ public abstract class BasePage {
                 //break
             }
         }
-//        for (int i = 0; i < byList.size(); i++) {
-//            try {
-//                WebElement element = getDriver().findElement(byList.get(i));
-//            } catch (NoSuchElementException ex) {
-//                System.out.println(byList.get(i) + " - not found");
-//                isElementDisplayed = false;
-//                //break
-//            }
-//        }
         Assert.assertTrue(isElementDisplayed);
     }
 }
