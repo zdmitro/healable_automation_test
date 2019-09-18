@@ -55,8 +55,9 @@ public abstract class BasePage {
     }
 
     //click
-    public void click(By elementBy) {
-        waitUntilElementDisplay(elementBy);
+    public void click(By elementBy) throws InterruptedException {
+        //waitUntilElementDisplay(elementBy);
+        Thread.sleep(1000);
         this.driver.findElement(elementBy).click();
     }
 
