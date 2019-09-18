@@ -5,13 +5,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.List;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver) {super(driver);}
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     private By span = By.tagName("span");
     private By topBar = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-login/ion-header");
@@ -24,7 +25,7 @@ public class LoginPage extends BasePage{
 
     public LoginPage validateLoginPage() {
         List<WebElement> elements = getDriver().findElements(span);
-        Assert.assertEquals(elements.get(5).getText(),"Login");
+        Assert.assertEquals(elements.get(5).getText(), "Login");
         return this;
     }
 
@@ -41,6 +42,5 @@ public class LoginPage extends BasePage{
         assertElementsDisplayed(byList);
         return this;
     }
-
 
 }
