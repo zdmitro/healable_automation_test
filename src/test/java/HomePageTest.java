@@ -9,7 +9,6 @@ public class HomePageTest extends BaseTest {
         HomePage homePage_object = new HomePage(getDriver());
         homePage_object.
                 goToHomePage_method();
-
     }
 
     @Test
@@ -19,6 +18,4 @@ public class HomePageTest extends BaseTest {
                 .goToHomePage_method()
                 .validateHomePage();
     }
-
-
 }

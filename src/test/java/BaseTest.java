@@ -29,7 +29,7 @@ public abstract class BaseTest {
     public void tearDown() {
         if (this.driver != null) {
             this.driver.manage().deleteAllCookies();
-            this.driver.quit();
+            //this.driver.quit();
         }
     }
 
