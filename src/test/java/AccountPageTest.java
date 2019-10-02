@@ -1,8 +1,7 @@
 import org.testng.annotations.Test;
 import pages.HomePage;
 
-import static data.Data.LOGIN;
-import static data.Data.PASSWORD;
+import static data.Data.*;
 
 public class AccountPageTest extends BaseTest {
 
@@ -11,17 +10,15 @@ public class AccountPageTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToAccountPage(LOGIN, PASSWORD)
-                .validateAccountPage();
+                .validateAccountPage(USERNAME);
 
     }
-
+    @Test(priority = 1)
     public void goToVideoCall() throws InterruptedException {
         HomePage homePage = new HomePage(getDriver());
         homePage
-                .goToLoginPage()
-                .login(LOGIN,PASSWORD);
-
-
-
+                .goToVideoCall(LOGIN, PASSWORD);
     }
+
+
 }

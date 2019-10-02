@@ -17,6 +17,7 @@ public class AccountPage extends BasePage {
     private By smallEmblem = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-home/ion-header/ion-navbar/div[2]/ion-grid/ion-row/ion-col[1]/img");
     private By homeBtn = By.id("divHome");
     private By videoCallBtn = By.id("divVideo");
+
     private By chatBtn = By.id("divChat");
     private By myNetworkBtn = By.id("divNetwork");
     private By groupsBtn = By.id("divGroup");
@@ -29,7 +30,10 @@ public class AccountPage extends BasePage {
     private By userName = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-home/ion-content/div[2]/div/ion-grid/ion-row/ion-col[1]/ion-card/div/div[2]/p");
     private By accountUserName = By.xpath("//*[@id='tabpanel-t0-0']/page-home/ion-content/div[2]/div/ion-grid/ion-row/ion-col[1]/ion-card/div/div[2]/p/span");
 
-    public By getUserName() {return userName; }
+    public By getUserName() { return userName; }
+    public By getVideoCallBtn() { return videoCallBtn; }
+    public By getChatBtn() { return chatBtn; }
+    public By getMyNetworkBtn() { return myNetworkBtn; }
 
     public AccountPage validateAccountPage1() {
         HomePage homePage = new HomePage(getDriver());
@@ -38,16 +42,11 @@ public class AccountPage extends BasePage {
         return this;
     }
 
-    public AccountPage validateAccountPage() throws InterruptedException {
-        Thread.sleep(1000);
-        assertEquals(this.accountUserName, "Dmitro Zagrebenyev");
+    public AccountPage validateAccountPage(String accountUser) throws InterruptedException {
+        Thread.sleep(2000);
+        assertEquals(this.accountUserName, accountUser);
         return this;
     }
 
-    public AccountPage clickVideoCallBtn() throws InterruptedException {
-        getDriver();
-        click(this.videoCallBtn);
-        return this;
-    }
 
 }

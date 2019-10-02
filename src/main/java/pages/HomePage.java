@@ -50,4 +50,63 @@ public class HomePage extends BasePage {
 
         return new AccountPage(getDriver());
     }
+
+    public VideoCallPage goToVideoCall(String login, String password) throws InterruptedException {
+
+        getDriver().get(propertiesReader.getUrl());
+        click(this.loginButton);
+        LoginPage loginPage = new LoginPage(getDriver());
+        Thread.sleep(1000);
+        writeText(loginPage.getLoginField(), login);
+        Thread.sleep(1000);
+        writeText(loginPage.getPasswordField(), password);
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+
+        VideoCallPage videoCallPage = new VideoCallPage(getDriver());
+        AccountPage accountPage = new AccountPage(getDriver());
+        Thread.sleep(2000);
+        click(accountPage.getVideoCallBtn());
+        return new VideoCallPage(getDriver());
+    }
+
+    public ChatPage goToChatPage(String login, String password) throws InterruptedException {
+
+        getDriver().get(propertiesReader.getUrl());
+        click(this.loginButton);
+        LoginPage loginPage = new LoginPage(getDriver());
+        Thread.sleep(1000);
+        writeText(loginPage.getLoginField(), login);
+        Thread.sleep(1000);
+        writeText(loginPage.getPasswordField(), password);
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+
+        ChatPage chatPage = new ChatPage(getDriver());
+
+        AccountPage accountPage = new AccountPage(getDriver());
+        Thread.sleep(2000);
+        click(accountPage.getChatBtn());
+        return new ChatPage(getDriver());
+    }
+
+    public MyNetworkPage goToMyNetworkPage(String login, String password) throws InterruptedException {
+
+        getDriver().get(propertiesReader.getUrl());
+        click(this.loginButton);
+        LoginPage loginPage = new LoginPage(getDriver());
+        Thread.sleep(1000);
+        writeText(loginPage.getLoginField(), login);
+        Thread.sleep(1000);
+        writeText(loginPage.getPasswordField(), password);
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+
+        //MyNetworkPage myNetworkPage = new MyNetworkPage(getDriver());
+
+        AccountPage accountPage = new AccountPage(getDriver());
+        Thread.sleep(2000);
+        click(accountPage.getMyNetworkBtn());
+        return new MyNetworkPage(getDriver());
+    }
 }
