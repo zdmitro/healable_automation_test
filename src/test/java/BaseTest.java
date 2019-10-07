@@ -17,8 +17,8 @@ public abstract class BaseTest {
         The Desired Capabilities Class helps us to tell the webdriver, which environment we are going to use in our test script.
          */
         PropertiesReader propertiesReader = new PropertiesReader();
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setJavascriptEnabled(true); //We allow execution of javaScript
+//        DesiredCapabilities caps = new DesiredCapabilities();
+//        caps.setJavascriptEnabled(true); //We allow execution of javaScript
         System.setProperty("webdriver.chrome.driver", propertiesReader.getChromeDriver());
         this.driver = new ChromeDriver();
         this.driver.manage().deleteAllCookies();

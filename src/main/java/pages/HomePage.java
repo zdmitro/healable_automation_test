@@ -109,4 +109,58 @@ public class HomePage extends BasePage {
         click(accountPage.getMyNetworkBtn());
         return new MyNetworkPage(getDriver());
     }
+
+    public GroopsPage goToGroopsPage(String login, String password) throws InterruptedException {
+
+        getDriver().get(propertiesReader.getUrl());
+        click(this.loginButton);
+        LoginPage loginPage = new LoginPage(getDriver());
+        Thread.sleep(1000);
+        writeText(loginPage.getLoginField(), login);
+        Thread.sleep(1000);
+        writeText(loginPage.getPasswordField(), password);
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+
+        AccountPage accountPage = new AccountPage(getDriver());
+        Thread.sleep(2000);
+        click(accountPage.getGroupsBtn());
+        return new GroopsPage(getDriver());
+    }
+
+    public SettingsPage goToSettingsPage(String login, String password) throws InterruptedException {
+
+        getDriver().get(propertiesReader.getUrl());
+        click(this.loginButton);
+        LoginPage loginPage = new LoginPage(getDriver());
+        Thread.sleep(1000);
+        writeText(loginPage.getLoginField(), login);
+        Thread.sleep(1000);
+        writeText(loginPage.getPasswordField(), password);
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+
+        AccountPage accountPage = new AccountPage(getDriver());
+        Thread.sleep(3000);
+        click(accountPage.getSettingsBtn());
+        return new SettingsPage(getDriver());
+    }
+
+    public PersonalInfoPage goToPersonalInfoPageRightButton(String login, String password) throws InterruptedException {
+
+        getDriver().get(propertiesReader.getUrl());
+        click(this.loginButton);
+        LoginPage loginPage = new LoginPage(getDriver());
+        Thread.sleep(1000);
+        writeText(loginPage.getLoginField(), login);
+        Thread.sleep(1000);
+        writeText(loginPage.getPasswordField(), password);
+        Thread.sleep(1000);
+        loginPage.clickLogin();
+
+        AccountPage accountPage = new AccountPage(getDriver());
+        Thread.sleep(2000);
+        click(accountPage.getProfileBtn());
+        return new PersonalInfoPage(getDriver());
+    }
 }

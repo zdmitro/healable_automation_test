@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class VideoCallPage extends BasePage {
@@ -33,9 +34,11 @@ public class VideoCallPage extends BasePage {
         assertEquals(bookAppointment, "BOOK APPOINTMENT");
 
         System.out.println(elements.get(0).getText());
+        System.out.println(elements.get(1).getText());
+        System.out.println(elements.get(2).getText());
         System.out.println(readText(bookAppointment));
-        return this;
 
+        return this;
     }
 
 }

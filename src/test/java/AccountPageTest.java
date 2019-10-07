@@ -13,12 +13,17 @@ public class AccountPageTest extends BaseTest {
                 .validateAccountPage(USERNAME);
 
     }
+
     @Test(priority = 1)
-    public void goToVideoCall() throws InterruptedException {
+    public void validateDisplayedElements() throws InterruptedException {
         HomePage homePage = new HomePage(getDriver());
         homePage
-                .goToVideoCall(LOGIN, PASSWORD);
+                .goToAccountPage(LOGIN,PASSWORD)
+                .checkElementsDisplayed();
     }
+
+
+
 
 
 }
