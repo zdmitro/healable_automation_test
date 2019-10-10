@@ -101,4 +101,12 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
+    @Test(priority = 10)
+    public void negativeLoginTestsLoop() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        homePage
+                .goToLoginPage()
+                .validateLoopLoginError("src/main/resources/testDataFiles/login_data.txt");
+    }
+
 }

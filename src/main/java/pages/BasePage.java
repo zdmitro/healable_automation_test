@@ -143,6 +143,11 @@ public abstract class BasePage {
         }
         Assert.assertTrue(isElementDisplayed);
     }
+
+    public void clearField(By elementBy) {
+        waitVisibility(elementBy);
+        driver.findElement(elementBy).clear();
+    }
 }
 
 

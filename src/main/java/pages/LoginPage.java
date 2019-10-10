@@ -12,9 +12,11 @@ import java.util.List;
 import static data.Data.LOGIN;
 import static data.Data.PASSWORD;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver) {super(driver);}
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     private By span = By.tagName("span");
     private By buttonTag = By.tagName("button");
@@ -27,7 +29,7 @@ public class LoginPage extends BasePage{
     private By passwordField = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-login/ion-content/div[2]/div/ion-item[2]/div[1]/div/ion-input/input");
     private By passwordFieldEye = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-login/ion-content/div[2]/div/ion-item[2]/div[1]/button/span/ion-icon");
     private By forgotPasswordLink = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-login/ion-content/div[2]/div/ion-row[2]/a");
-//    private By loginButton = By.xpath("//*[@id='login']/span");
+    //    private By loginButton = By.xpath("//*[@id='login']/span");
     private By loginButton = By.xpath("//*[@id='login']");
 
     private By backToHomePageButton = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-login/ion-header/ion-navbar/div[2]/ion-grid/ion-row/ion-col[1]/ion-buttons/button");
@@ -45,7 +47,7 @@ public class LoginPage extends BasePage{
 
     public LoginPage validateLoginPage() {
         List<WebElement> elements = getDriver().findElements(span);
-        Assert.assertEquals(elements.get(5).getText(),"Login");
+        Assert.assertEquals(elements.get(5).getText(), "Login");
         return this;
     }
 
@@ -82,13 +84,13 @@ public class LoginPage extends BasePage{
     }
 
     public LoginPage login(String login, String password) throws InterruptedException {
-            Thread.sleep(1000);
-            writeText(this.loginField, login);
-            Thread.sleep(1000);
-            writeText(this.passwordField, password);
-            Thread.sleep(1000);
-            clickLogin();
-            return this;
+        Thread.sleep(1000);
+        writeText(this.loginField, login);
+        Thread.sleep(1000);
+        writeText(this.passwordField, password);
+        Thread.sleep(1000);
+        clickLogin();
+        return this;
     }
 
     public LoginPage clickLogin() {
@@ -105,7 +107,7 @@ public class LoginPage extends BasePage{
 
     public LoginPage validateLoginError() throws InterruptedException {
         Thread.sleep(1000);
-        assertEquals(this.loginErrorMessage, " Invalid login. Please try again. ".trim());
+        assertEquals(this.loginErrorMessage, "Invalid login. Please try again.");
         return this;
     }
 
@@ -115,19 +117,33 @@ public class LoginPage extends BasePage{
         return this;
     }
 
-//    public LoginPage validateLoginToUserAccount(String user) throws InterruptedException {
-//        WebElement webElement = getDriver().findElement(userName);
-//        String userNameText = webElement.getText();
-//        Assert.assertEquals(userNameText, user);
-//        return this;
-//    }
+    public void validateLoopLoginError(String filePath) {
+        FileReader fileReader = new FileReader(filePath);
+        List<String> dataList = fileReader.getDataList();
+        dataList.forEach(e -> {
+            String[] s = e.split(" ");
+            String login = getStringDataValue(s[0]);
+            String password = getStringDataValue(s[1]);
+            clearField(this.loginField);
+            writeText(this.loginField, login);
+            clearField(this.passwordField);
+            writeText(this.passwordField, password);
+            clickLogin();
+            assertEquals(this.loginErrorMessage, "Invalid login. Please try again.");
+        });
+    }
 
-//    public LoginPage validateAccountPage() {
-//        List<WebElement> elements = getDriver().findElements(span);
-//        Assert.assertEquals(elements.get(9).getText(),"Dmitro Zagrebenyev");
-//        return this;
-//    }
+    private String getStringDataValue(String testData) {
 
+        if (testData.equals("\"\"")) {
+            testData = "";
+        } else if (testData.equals("null")) {
+            testData = null;
+        } else if (testData.equals("space")) {
+            testData = " ";
+        }
+        return testData;
+    }
 
 }
 
