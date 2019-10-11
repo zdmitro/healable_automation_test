@@ -1,9 +1,15 @@
 import org.testng.annotations.Test;
+import utils.FileReader;
 import pages.HomePage;
+
+import java.util.List;
 
 import static data.Data.*;
 
 public class LoginPageTest extends BaseTest {
+
+    private final FileReader fileReader = new FileReader("src/main/resources/testDataFiles/login_data.txt");
+    private final List<String> dataList = fileReader.getDataList();
 
     @Test
     public void validLoginPage() throws InterruptedException {
@@ -102,11 +108,43 @@ public class LoginPageTest extends BaseTest {
     }
 
     @Test(priority = 10)
-    public void negativeLoginTestsLoop() throws InterruptedException {
+    public void negativeLoginTestsLoop_0() throws InterruptedException {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoopLoginError("src/main/resources/testDataFiles/login_data.txt");
+                .validateLoopLoginError(dataList.get(0));
+    }
+
+    @Test(priority = 11)
+    public void negativeLoginTestsLoop_1() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        homePage
+                .goToLoginPage()
+                .validateLoopLoginError(dataList.get(1));
+    }
+
+    @Test(priority = 12)
+    public void negativeLoginTestsLoop_2() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        homePage
+                .goToLoginPage()
+                .validateLoopLoginError(dataList.get(2));
+    }
+
+    @Test(priority = 13)
+    public void negativeLoginTestsLoop_3() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        homePage
+                .goToLoginPage()
+                .validateLoopLoginError(dataList.get(3));
+    }
+
+    @Test(priority = 14)
+    public void negativeLoginTestsLoop_4() throws InterruptedException {
+        HomePage homePage = new HomePage(getDriver());
+        homePage
+                .goToLoginPage()
+                .validateLoopLoginError(dataList.get(4));
     }
 
 }

@@ -14,7 +14,7 @@ public class AccountPage extends BasePage {
     public AccountPage(WebDriver driver) { super(driver); }
 
 
-    private By span = By.tagName("span");
+    private final By span = By.tagName("span");
     private By smallEmblem = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-home/ion-header/ion-navbar/div[2]/ion-grid/ion-row/ion-col[1]/img");
     private By homeBtn = By.id("divHome");
     private By videoCallBtn = By.id("divVideo");
@@ -73,8 +73,10 @@ public class AccountPage extends BasePage {
         Thread.sleep(4000);
         assertElementsDisplayed(byList);
 
-//        JavascriptExecutor js = (JavascriptExecutor)getDriver();
-//        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        if (getDriver() instanceof JavascriptExecutor) {
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        }
         return this;
     }
 

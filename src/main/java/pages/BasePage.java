@@ -16,13 +16,16 @@ public abstract class BasePage {
     private WebDriverWait wait;
     private static final int TIMEOUT = 15;
     private static final int POLLING = 100;
-
-    public PropertiesReader propertiesReader = new PropertiesReader();
+    private PropertiesReader propertiesReader = new PropertiesReader();
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, TIMEOUT, POLLING);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, TIMEOUT), this);
+    }
+
+    public PropertiesReader getPropertiesReader() {
+        return propertiesReader;
     }
 
     //wait visibility

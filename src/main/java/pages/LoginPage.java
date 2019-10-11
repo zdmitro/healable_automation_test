@@ -1,16 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.security.PublicKey;
 import java.util.Arrays;
 import java.util.List;
-
-import static data.Data.LOGIN;
-import static data.Data.PASSWORD;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class LoginPage extends BasePage {
 
@@ -99,12 +97,6 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-//    public LoginPage validateLoginError() {
-//        List<WebElement> elements = getDriver().findElements(p);
-//        Assert.assertEquals(elements.get(0).getText()," Invalid login. Please try again. ");
-//        return this;
-//    }
-
     public LoginPage validateLoginError() throws InterruptedException {
         Thread.sleep(1000);
         assertEquals(this.loginErrorMessage, "Invalid login. Please try again.");
@@ -117,20 +109,17 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void validateLoopLoginError(String filePath) {
-        FileReader fileReader = new FileReader(filePath);
-        List<String> dataList = fileReader.getDataList();
-        dataList.forEach(e -> {
-            String[] s = e.split(" ");
-            String login = getStringDataValue(s[0]);
-            String password = getStringDataValue(s[1]);
-            clearField(this.loginField);
-            writeText(this.loginField, login);
-            clearField(this.passwordField);
-            writeText(this.passwordField, password);
-            clickLogin();
-            assertEquals(this.loginErrorMessage, "Invalid login. Please try again.");
-        });
+    public void validateLoopLoginError(String loginPassword) {
+        String[] s = loginPassword.split(" ");
+        String login = getStringDataValue(s[0]);
+        String password = getStringDataValue(s[1]);
+        clearField(this.loginField);
+        writeText(this.loginField, login);
+        clearField(this.passwordField);
+        writeText(this.passwordField, password);
+        clickLogin();
+        waitVisibility(this.loginErrorMessage);
+        Assert.assertTrue(isElementDisplayed(this.loginErrorMessage));
     }
 
     private String getStringDataValue(String testData) {

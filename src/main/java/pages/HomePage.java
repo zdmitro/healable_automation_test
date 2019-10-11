@@ -3,8 +3,11 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import utils.PropertiesReader;
 
 public class HomePage extends BasePage {
+
+    private PropertiesReader propertiesReader = new PropertiesReader();
 
     public HomePage(WebDriver driver) {
         super(driver);
