@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="SmokeTest">
+
+    <test name="Login" preserve-order="true">
+        <classes>
+            <class name="LoginPageTest"/>
+        </classes>
+    </test>
+
+</suite>

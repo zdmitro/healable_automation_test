@@ -1,5 +1,6 @@
 package pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
@@ -17,6 +18,7 @@ public abstract class BasePage {
     private static final int TIMEOUT = 15;
     private static final int POLLING = 100;
     private PropertiesReader propertiesReader = new PropertiesReader();
+    private static final Logger log = Logger.getLogger(LoginPage.class);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -30,7 +32,7 @@ public abstract class BasePage {
 
     //wait visibility
     public void waitVisibility(By elementBy) {
-        this.wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(elementBy));
+        this.wait.until(ExpectedConditions.visibilityOfElementLocated(elementBy));
     }
 
     public boolean isElementDisplayed(By elementBy) {
@@ -72,7 +74,7 @@ public abstract class BasePage {
 
     //read text
     public String readText(By elementBy) {
-        waitVisibility(elementBy);
+//        waitVisibility(elementBy);
         return this.driver.findElement(elementBy).getText();
     }
 
@@ -111,7 +113,7 @@ public abstract class BasePage {
 
     //assert
     public void assertEquals(By elementBy, String expectedText) {
-        waitVisibility(elementBy);
+//        waitVisibility(elementBy);
         Assert.assertEquals(readText(elementBy), expectedText);
     }
 
@@ -138,8 +140,10 @@ public abstract class BasePage {
         for (By e : byList) {
             try {
                 element = getDriver().findElement(e);
+                log.info(e + " - is present on page");
             } catch (NoSuchElementException ex) {
                 System.out.println(e + " - not found");
+                log.info(e + " - not found");
                 isElementDisplayed = false;
                 //break
             }

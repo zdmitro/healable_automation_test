@@ -1,4 +1,6 @@
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
+import pages.AccountPage;
 import utils.FileReader;
 import pages.HomePage;
 
@@ -10,59 +12,104 @@ public class LoginPageTest extends BaseTest {
 
     private final FileReader fileReader = new FileReader("src/main/resources/testDataFiles/login_data.txt");
     private final List<String> dataList = fileReader.getDataList();
+    private static final Logger log = Logger.getLogger(LoginPageTest.class);
+
+    /**
+     * Opens login page and validates it.
+     * It looks for "Login" button text and "Forgot Password" link text to validate the text
+     */
 
     @Test
     public void validLoginPage() throws InterruptedException {
+        log.info("Run Autotest to validate LoginPage");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
                 .validateLoginPage();
     }
 
+    /**
+     * Opens login page and verifies that all the elements are present.
+     *
+     * topBar,
+     * logo,
+     * loginField,
+     * passwordField,
+     * passwordFieldEye,
+     * forgotPasswordLink,
+     * loginButton
+     */
+
     @Test(priority = 1)
     public void validateLoginPageElements() throws InterruptedException {
+        log.info("Run Autotest to check if all elements are present on the page");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .checkForElementsDisplayed_LoginPage();
     }
 
+    /**
+     * Opens login page, then clicks on Go Back button provided by the app,
+     * goes back to Home page and validates homepage, by verifying
+     * text on Login and Sign Up button
+     */
+
     @Test(priority = 2)
     public void goBackToHomePage() throws InterruptedException {
+        log.info("Run Autotest to verify Reverse button provided by the app on Login Page");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .clickOnBackToHomePage()
                 .validateHomePage();
     }
 
+    /**
+     * Opens login page, then clicks on Forgot Password link and validates
+     * Forgot Password page by validating Login field and Forgot Password button
+     */
+
     @Test(priority = 3)
     public void goToForgotPasswordPage() throws InterruptedException {
+        log.info("Run Autotest to verify Forgot Password link");
         HomePage homePage = new HomePage(getDriver());
+
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .clickOnForgotPassowrd()
                 .validateForgotPasswordPage();
     }
 
+    /**
+     * Positive Login Autotest: verifies successful login.
+     */
+
     @Test(priority = 4)
     public void loginCorrectCredentials() throws InterruptedException {
+        log.info("Login Autotest: positive. Successful login");
         HomePage homePage = new HomePage(getDriver());
+        AccountPage accountPage = new AccountPage(getDriver());
+
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .login(LOGIN,PASSWORD);
+
+        accountPage
+                .validateAccountPage(USERNAME);
     }
+
+    /**
+     * Positive Login Autotest: verifies successful login.
+     */
 
     @Test(priority = 5)
     public void loginNegTestBothFieldsBlank() throws InterruptedException {
+        log.info("Login Autotest: negative. Both Login and Password are blank");
+
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .login("","")
                 .validateLoginError();
     }
@@ -72,7 +119,6 @@ public class LoginPageTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .login("aaaaa12345","")
                 .validateLoginError();
     }
@@ -82,7 +128,6 @@ public class LoginPageTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .login("","aaaaa12345$")
                 .validateLoginError();
     }
@@ -92,7 +137,6 @@ public class LoginPageTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .login(LOGIN,"aaaaa12345$")
                 .validateLoginError();
     }
@@ -102,7 +146,6 @@ public class LoginPageTest extends BaseTest {
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
-                .validateLoginPage()
                 .login("aaaaa12345",PASSWORD)
                 .validateLoginError();
     }
