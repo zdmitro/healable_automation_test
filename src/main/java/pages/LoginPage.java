@@ -134,9 +134,9 @@ public class LoginPage extends BasePage {
     }
 
     public LoginPage validateLoginError() throws InterruptedException {
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         assertEquals(this.loginErrorMessage, "Invalid login. Please try again.");
-        log.info(readText(this.loginErrorMessage) + " text is " + readText(this.loginErrorMessage).equals("Invalid login. Please try again."));
+        log.info(readText(this.loginErrorMessage) + "## MESSAGE TEXT is " + readText(this.loginErrorMessage).equals("Invalid login. Please try again."));
         return this;
     }
 

@@ -113,7 +113,7 @@ public abstract class BasePage {
 
     //assert
     public void assertEquals(By elementBy, String expectedText) {
-//        waitVisibility(elementBy);
+        waitVisibility(elementBy);
         Assert.assertEquals(readText(elementBy), expectedText);
     }
 

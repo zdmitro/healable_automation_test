@@ -58,13 +58,15 @@ public class AccountPage extends BasePage {
     }
 
     public AccountPage validateAccountPage(String accountUser) throws InterruptedException {
+        log.info("validateAccountPage");
         Thread.sleep(2000);
         assertEquals(this.accountUserName, accountUser);
-        log.info(readText(this.accountUserName) + " text is " + readText(this.accountUserName).equals("Dmitro Zagrebenyev"));
+        log.info(readText(this.accountUserName) + "## TEXT is " + readText(this.accountUserName).equals("Dmitro Zagrebenyev"));
         return this;
     }
 
     public AccountPage checkElementsDisplayed() throws InterruptedException {
+        log.info("checkElementsDisplayed");
         List<By> byList = Arrays.asList(
                 this.smallEmblem,
                 this.searchField,

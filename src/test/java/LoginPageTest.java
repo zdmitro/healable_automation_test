@@ -100,7 +100,7 @@ public class LoginPageTest extends BaseTest {
     }
 
     /**
-     * Positive Login Autotest: verifies successful login.
+     * Negative Login Autotest: Both Login and Password are blank
      */
 
     @Test(priority = 5)
@@ -114,8 +114,13 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
+    /**
+     * Negative Login Autotest: Incorrect login, blank password.
+     */
+
     @Test(priority = 6)
     public void loginNegTest_IncorrectLoginPasswordBlank() throws InterruptedException {
+        log.info("Login Autotest: negative. Incorrect login, blank password");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
@@ -123,8 +128,13 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
+    /**
+     * Negative Login Autotest: Incorrect login, blank password.
+     */
+
     @Test(priority = 7)
     public void loginNegTest_BlankLoginIncorrectPassword() throws InterruptedException {
+        log.info("Login Autotest: negative. Blank login, incorrect password");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
@@ -132,8 +142,13 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
+    /**
+     * Negative Login Autotest: Correct, Incorrect password.
+     */
+
     @Test(priority = 8)
     public void loginNegTest_CorrectLoginIncorrectPassword() throws InterruptedException {
+        log.info("Login Autotest: negative. Correct login, Incorrect password");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
@@ -141,8 +156,13 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
+    /**
+     * Negative Login Autotest: Correct login, Incorrect password.
+     */
+
     @Test(priority = 9)
     public void loginNegTest_IncorrectLoginCorrectPassword() throws InterruptedException {
+        log.info("Login Autotest: negative. Incorrect login, Correct password");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
@@ -150,8 +170,13 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
+    /**
+     * Negative Login Autotest: Correct login, Incorrect password.
+
+
     @Test(priority = 10)
     public void negativeLoginTestsLoop_0() throws InterruptedException {
+        log.info("Login Autotest: negative. Incorrect login, Correct password");
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToLoginPage()
@@ -190,4 +215,5 @@ public class LoginPageTest extends BaseTest {
                 .validateLoopLoginError(dataList.get(4));
     }
 
+    */
 }

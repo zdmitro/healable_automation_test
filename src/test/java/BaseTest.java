@@ -49,6 +49,7 @@ public abstract class BaseTest {
     @AfterMethod
     public void tearDown() {
         if (this.driver != null) {
+
             this.driver.manage().deleteAllCookies();
             this.driver.quit();
         }

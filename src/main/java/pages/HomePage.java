@@ -42,6 +42,7 @@ public class HomePage extends BasePage {
     }
 
     public HomePage goToHomePage_method() {
+        log.info("goToHomePage_method");
         getDriver().get(propertiesReader.getUrl());
         return this;
     }
@@ -62,11 +63,15 @@ public class HomePage extends BasePage {
     public HomePage validateHomePage() {
         log.info("Validate Home Page");
         assertEquals(this.loginButton, "Login");
+        log.info(readText(this.loginButton) + " ## TEXT is " + readText(this.loginButton).equals("Login"));
         assertEquals(this.signUpButton, "Sign Up");
+        log.info(readText(this.signUpButton) + " ## TEXT is " + readText(this.signUpButton).equals("Sign Up"));
+
         return this;
     }
 
     public AccountPage goToAccountPage(String login, String password) throws InterruptedException {
+        log.info("goToAccountPage");
         getDriver().get(propertiesReader.getUrl());
         click(this.loginButton);
         LoginPage loginPage = new LoginPage(getDriver());
@@ -81,6 +86,7 @@ public class HomePage extends BasePage {
     }
 
     public VideoCallPage goToVideoCall(String login, String password) throws InterruptedException {
+        log.info("goToVideoCall");
 
         getDriver().get(propertiesReader.getUrl());
         click(this.loginButton);
@@ -100,7 +106,7 @@ public class HomePage extends BasePage {
     }
 
     public ChatPage goToChatPage(String login, String password) throws InterruptedException {
-
+        log.info("goToChatPage");
         getDriver().get(propertiesReader.getUrl());
         click(this.loginButton);
         LoginPage loginPage = new LoginPage(getDriver());
@@ -121,7 +127,7 @@ public class HomePage extends BasePage {
 
 
     public GroopsPage goToGroopsPage(String login, String password) throws InterruptedException {
-
+        log.info("goToGroopsPage");
         getDriver().get(propertiesReader.getUrl());
         click(this.loginButton);
         LoginPage loginPage = new LoginPage(getDriver());
@@ -139,8 +145,10 @@ public class HomePage extends BasePage {
     }
 
     public SettingsPage goToSettingsPage(String login, String password) throws InterruptedException {
+        log.info("goToSettingsPage");
 
         getDriver().get(propertiesReader.getUrl());
+        Thread.sleep(1000);
         click(this.loginButton);
         LoginPage loginPage = new LoginPage(getDriver());
         Thread.sleep(1000);
@@ -157,7 +165,7 @@ public class HomePage extends BasePage {
     }
 
     public PersonalInfoPage goToPersonalInfoPageRightButton(String login, String password) throws InterruptedException {
-
+        log.info("goToPersonalInfoPageRightButton");
         getDriver().get(propertiesReader.getUrl());
         click(this.loginButton);
         LoginPage loginPage = new LoginPage(getDriver());
