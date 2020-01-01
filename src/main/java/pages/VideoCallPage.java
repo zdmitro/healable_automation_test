@@ -10,15 +10,21 @@ import java.util.Arrays;
 import java.util.List;
 
 public class VideoCallPage extends BasePage {
+    /*********Constructor**********/
     public VideoCallPage(WebDriver driver) { super(driver); }
+
+    /*************PAGE INSTANTIATIONS*************/
     private static final Logger log = Logger.getLogger(VideoCallPage.class);
 
+    /*********Web Elements*********/
     private By bookAppointment = By.id("example_c lcl-appointment-schedule--styling");
 
+    /************* Methods ************/
     public VideoCallPage validateBookAppointment() throws InterruptedException {
         log.info("validateBookAppointment");
 
         Thread.sleep(2000);
+
 //        List<WebElement> elements = getDriver().findElements(By.tagName("ion-segment-button"));
 //        WebElement element = getDriver().findElement(this.bookAppointment);
 //        Assert.assertTrue(
@@ -46,7 +52,6 @@ public class VideoCallPage extends BasePage {
                     Assert.assertEquals(fields.get(2).getText(), "HISTORY");
                     log.info(fields.get(2).getText() + " ## TEXT is " + fields.get(2).getText().equals("HISTORY"));
                     break;
-
             }
         }
 

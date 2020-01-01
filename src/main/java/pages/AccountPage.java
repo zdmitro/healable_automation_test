@@ -12,10 +12,15 @@ import java.util.List;
 
 public class AccountPage extends BasePage {
 
-    public AccountPage(WebDriver driver) { super(driver); }
+    /*********Constructor*********
+    */
+     public AccountPage(WebDriver driver) { super(driver); }
+
+    /*************PAGE INSTANTIATIONS*************/
+
     private static final Logger log = Logger.getLogger(LoginPage.class);
 
-
+    /*********Web Elements*********/
     private final By span = By.tagName("span");
     private By smallEmblem = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-home/ion-header/span/ion-grid/ion-row/ion-col[1]/div/img");
     private  By searchField = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-home/ion-header/span/ion-grid/ion-row/ion-col[2]/div/ion-searchbar/div/input");
@@ -42,7 +47,6 @@ public class AccountPage extends BasePage {
     private By userName = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-home/ion-content/div[2]/div/ion-grid/ion-row/ion-col[1]/ion-card/div/div[2]/p");
     private By accountUserName = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-home/ion-content/div[2]/div/ion-grid/ion-row/ion-col[1]/ion-card/div/div[2]/p");
 
-
     public By getUserName() { return userName; }
     public By getVideoCallBtn() { return videoCallBtn; }
     public By getChatBtn() { return chatBtn; }
@@ -50,6 +54,7 @@ public class AccountPage extends BasePage {
     public By getSettingsBtn() { return settingsBtn; }
     public By getProfileBtn() { return profileBtn; }
 
+    /************* Methods ************/
     public AccountPage validateAccountPage1() {
         HomePage homePage = new HomePage(getDriver());
         List<WebElement> elements = getDriver().findElements(span);
@@ -90,9 +95,5 @@ public class AccountPage extends BasePage {
         }
         return this;
     }
-
-//    JavascriptExecutor js = (JavascriptExecutor) getWebDriver();
-//    js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-
 
 }
