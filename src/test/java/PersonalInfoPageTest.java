@@ -23,4 +23,17 @@ public class PersonalInfoPageTest extends BaseTest {
                 .validatePersonalInfoPage();
     }
 
+    /**
+     * Opens page with personal information details (clicks on the picture icon on the top bar (right corner)
+     * Validates personal information page
+     */
+    @Test
+    public void verifyHeaders() throws InterruptedException {
+        log.info("RUN AUTOTEST TO VERIFY HEADERS ON PERSONAL INFO PAGE");
+        HomePage homePage = new HomePage(getDriver());
+        homePage
+                .goToPersonalInfoPageRightButton(LOGIN, PASSWORD)
+                .verifyHeaders();
+    }
+
 }

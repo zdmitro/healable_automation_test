@@ -543,3 +543,10 @@
 2020-01-01 13:19:42 INFO  VideoCallPage:43 - APPOINTMENTS ## TEXT is true
 2020-01-01 13:19:42 INFO  VideoCallPage:47 - HISTORY ## TEXT is true
 2020-01-01 13:19:42 INFO  VideoCallPage:54 - Book Appointment ## TEXT is true
+2020-01-01 20:33:11 INFO  LoginPageTest:32 - RUN AUTOTEST TO VERIFY HEADERS ON PERSONAL INFO PAGE
+2020-01-01 20:33:12 INFO  HomePage:168 - goToPersonalInfoPageRightButton
+2020-01-01 20:33:41 INFO  LoginPage:52 - Personal Info ## TEXT is true
+2020-01-01 20:33:41 INFO  LoginPage:56 - My Story ## TEXT is true
+2020-01-01 20:33:41 INFO  LoginPage:60 - Health Interests: ## TEXT is true
+2020-01-01 20:33:41 INFO  LoginPage:64 - View Connections ## TEXT is true
+2020-01-01 20:33:41 INFO  LoginPage:68 - View Groups ## TEXT is true

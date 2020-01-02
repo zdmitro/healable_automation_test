@@ -15,7 +15,6 @@ public class SettingsPage extends BasePage {
     private By accountTab = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-more/ion-content/div[2]/div/ion-row/ion-col[2]/div/ion-grid/ion-row");
     private By generalTab = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-more/ion-content/div[2]/div/ion-row/ion-col[2]/div/ion-grid/h6[2]");
     private By version1 = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-more/ion-content/div[2]/div/ion-grid/ion-row/ion-col[2]/div/ion-grid/p");
-
     private By logoutBtn = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-more/ion-content/div[2]/div/ion-grid/ion-row/ion-col[2]/div/ion-grid/button/span");
 
     public SettingsPage validateAccountAndGeneral() throws InterruptedException {

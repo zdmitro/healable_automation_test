@@ -33,26 +33,67 @@ public class PersonalInfoPage extends BasePage {
         return this;
     }
 
-    /**
-    public PersonalInfoPage validatePersonalInfoLabels() throws InterruptedException {
+    public PersonalInfoPage verifyHeaders() throws InterruptedException {
+        log.info("verifyHeaders");
+        Thread.sleep(1000);
+        List<WebElement> fields = getDriver().findElements(By.tagName("h6"));
 
-        Thread.sleep(2000);
-        List<WebElement> elements = getDriver().findElements(By.tagName("ion-label"));
+        for (int i = 0; i <= 7; i++) {
+            System.out.println(fields.get(i).getText());
 
-        for (int i = 0; i <= 1; i++) {
-            System.out.println(elements.get(i).getText());
             switch (i) {
-                case 0:
-                    Assert.assertEquals(elements.get(0).getText(), "Account");
+//                case 0:
+//                    break;
+//                case 1:
+//                    break;
+//                case 2:
+//                    break;
+                case 3:
+                    Assert.assertEquals(fields.get(3).getText(), "Personal Info");
+                    log.info(fields.get(3).getText() + " ## TEXT is " + fields.get(3).getText().equals("Personal Info"));
                     break;
-                case 1:
-                    Assert.assertEquals(elements.get(1).getText(), "General");
+                case 4:
+                    Assert.assertEquals(fields.get(4).getText(), "My Story");
+                    log.info(fields.get(4).getText() + " ## TEXT is " + fields.get(4).getText().equals("My Story"));
+                    break;
+                case 5:
+                    Assert.assertEquals(fields.get(5).getText(), "Health Interests:");
+                    log.info(fields.get(5).getText() + " ## TEXT is " + fields.get(5).getText().equals("Health Interests:"));
+                    break;
+                case 6:
+                    Assert.assertEquals(fields.get(6).getText(), "View Connections");
+                    log.info(fields.get(6).getText() + " ## TEXT is " + fields.get(6).getText().equals("View Connections"));
+                    break;
+                case 7:
+                    Assert.assertEquals(fields.get(7).getText(), "View Groups");
+                    log.info(fields.get(7).getText() + " ## TEXT is " + fields.get(7).getText().equals("View Groups"));
                     break;
             }
         }
         return this;
     }
-*/
+
+        /**
+        public PersonalInfoPage validatePersonalInfoLabels() throws InterruptedException {
+
+            Thread.sleep(2000);
+            List<WebElement> elements = getDriver().findElements(By.tagName("ion-label"));
+
+            for (int i = 0; i <= 1; i++) {
+                System.out.println(elements.get(i).getText());
+                switch (i) {
+                    case 0:
+                        Assert.assertEquals(elements.get(0).getText(), "Account");
+                        break;
+                    case 1:
+                        Assert.assertEquals(elements.get(1).getText(), "General");
+                        break;
+                }
+            }
+            return this;
+        }
+    */
 
 
 }
+
