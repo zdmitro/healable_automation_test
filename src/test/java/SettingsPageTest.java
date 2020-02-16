@@ -46,7 +46,7 @@ public class SettingsPageTest extends BaseTest{
         HomePage homePage = new HomePage(getDriver());
         homePage
                 .goToSettingsPage(LOGIN, PASSWORD)
-                .validateFields();
+                .validateFields1();
 
     }
 }

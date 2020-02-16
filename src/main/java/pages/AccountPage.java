@@ -21,6 +21,7 @@ public class AccountPage extends BasePage {
     private static final Logger log = Logger.getLogger(LoginPage.class);
 
     /*********Web Elements*********/
+    //Describe elements
     private final By span = By.tagName("span");
     private By smallEmblem = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-home/ion-header/span/ion-grid/ion-row/ion-col[1]/div/img");
     private  By searchField = By.xpath("/html/body/ion-app/ng-component/ion-nav/page-wall/ion-tabs/ion-tab[1]/page-home/ion-header/span/ion-grid/ion-row/ion-col[2]/div/ion-searchbar/div/input");
@@ -55,9 +56,16 @@ public class AccountPage extends BasePage {
     public By getProfileBtn() { return profileBtn; }
 
     /************* Methods ************/
+    /**
+     * This methods Opens account page and validates.
+     * It verifies that the name of the user is present on a page
+     * @return this;
+     */
     public AccountPage validateAccountPage1() {
         HomePage homePage = new HomePage(getDriver());
+        //Collect all spans to the collection
         List<WebElement> elements = getDriver().findElements(span);
+        //User name under count 9
         Assert.assertEquals(elements.get(9).getText(),"Dmitro Zagrebenyev");
         return this;
     }

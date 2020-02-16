@@ -170,8 +170,9 @@ public class LoginPageTest extends BaseTest {
                 .validateLoginError();
     }
 
-    /**
-     * Negative Login Autotest: Correct login, Incorrect password.
+    /** Negative Login Autotest: Correct login, Incorrect password.
+
+     */
 
 
     @Test(priority = 10)
@@ -215,5 +216,5 @@ public class LoginPageTest extends BaseTest {
                 .validateLoopLoginError(dataList.get(4));
     }
 
-    */
+
 }

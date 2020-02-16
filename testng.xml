@@ -1,9 +1,51 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="SmokeTest">
 
+    <test name="Home" preserve-order="true">
+        <classes>
+            <class name="HomePageTest"/>
+        </classes>
+    </test>
+
     <test name="Login" preserve-order="true">
         <classes>
             <class name="LoginPageTest"/>
+        </classes>
+    </test>
+
+    <test name="Account" preserve-order="true">
+        <classes>
+            <class name="AccountPageTest"/>
+        </classes>
+    </test>
+
+    <test name="Chat" preserve-order="true">
+        <classes>
+            <class name="ChatPageTest"/>
+        </classes>
+    </test>
+
+    <test name="Groops" preserve-order="true">
+        <classes>
+            <class name="GroopsPageTest"/>
+        </classes>
+    </test>
+
+    <test name="PersonalInfo" preserve-order="true">
+        <classes>
+            <class name="PersonalInfoPageTest"/>
+        </classes>
+    </test>
+
+    <test name="Settings" preserve-order="true">
+        <classes>
+            <class name="SettingsPageTest"/>
+        </classes>
+    </test>
+
+    <test name="VideoCall" preserve-order="true">
+        <classes>
+            <class name="VideoCallPageTest"/>
         </classes>
     </test>
 
